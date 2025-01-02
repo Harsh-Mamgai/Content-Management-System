@@ -1,0 +1,41 @@
+{%extends "base.html"%}
+{%block title%}Logout{%endblock title%}
+{%block css%}
+<style>
+    .line-container {
+        position: relative;
+        margin: 50px 0;
+    }
+    .image {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+</style>
+{%endblock css%}
+
+{%block body%}
+
+{%if messages%}
+    {%for message in messages%}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {%endfor%}
+{%endif%}
+<div class="container">
+    <img src="/static/img/title.png" alt="" width="200px" height="200px" class="my-3 mx-auto d-block">
+    <div class="line-container">
+        <img src="/static/img/logo.jpg" alt="" width="50px" class="image">
+        <hr class="my-4">
+    </div>
+    <div class="line-container">
+        <h3 class="text-center mt-3">You have been logged out</h3>
+        <h6 class="text-center">Thank you</h6>
+    </div>
+</div>
+
+{%endblock body%}

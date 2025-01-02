@@ -1,0 +1,115 @@
+{%extends 'base.html'%}
+{%block title%}Search{%endblock title%}
+{%block css%}
+  <style>
+    .post {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .post-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .title-link {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+    .title-link:hover {
+        color: #007BFF;
+    }
+    .post-content {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    .read-more-link {
+        text-decoration: none;
+    }
+    .read-more-button {
+        background-color: #FF5722;
+        color: white;
+        padding: 8px 16px;
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .read-more-button:hover {
+        background-color: #e64a19;
+    }
+    .post-actions {
+        margin-top: 15px;
+        display: flex;
+        gap: 15px;
+    }
+    a {
+        text-decoration: none;
+    }
+    .comment-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+    .comment-button:hover {
+        background-color: #45a049;
+    }
+    .view-comments-button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 15px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+    .view-comments-button:hover {
+        background-color: #0056b3;
+    }
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+  </style>
+{%endblock css%}
+{%block search%}
+    <form action="/search/" method="post" class="d-flex" role="search">
+        {%csrf_token%}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+{%endblock search%}
+{%block body%}
+    <div class="container">
+        <h1 class="my-3">Some related content on your search</h1>
+        {%for log in logs%}
+            <div class="post">
+                <h3 class="post-title"><a href="/blogpost/{{log.slug}}" class="title-link">{{log.title}}</a></h3>
+                <div class="post-content">{{log.content|slice:"250"}}...</div>
+                <a href="/blogpost/{{log.slug}}" class="read-more-link"><button class="read-more-button">Read More</button></a>
+                <div class="post-actions">
+                    <a href="/comment/{{log.slug}}" class="comment-link">
+                        <button class="comment-button">Comment</button>
+                    </a>
+                    <a href="/viewcomment/{{log.slug}}" class="view-comments-link">
+                        <button class="view-comments-button">View Comments</button>
+                    </a>
+                </div>
+            </div>        
+        {%endfor%}
+    </div>
+{%endblock body%}

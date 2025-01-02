@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%block title%}View Comments{%endblock title%}
+{%block css%}
+    <style>
+        .comment {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .comment-header {
+            display: flex;
+            align-items: center;
+        }
+        .user-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .username, .fullname {
+            margin: 0;
+        }
+        .comment-content {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+{%endblock css%}
+{%block body%}
+    <div class="container">
+        {%if comments%}
+        <h1 class="text-center">Users Comments</h1>
+        {%for comment in comments%}
+        <div class="comment">
+            <div class="comment-header">
+                <img src="/static/img/user.png" alt="" class="user-image">
+                <div class="user-info">
+                    <p class="username">Username: <strong>{{comment.name}}</strong></p>
+                    <p class="fullname">Name: <strong>{{comment.fname}} {{comment.lname}}</strong></p>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>{{comment.content}}</p>
+            </div>
+        </div>        
+        {%endfor%}
+        {%else%}
+        <h1 class="text-center">No user comments yet</h1>
+        {%endif%}
+    </div>
+{%endblock body%}

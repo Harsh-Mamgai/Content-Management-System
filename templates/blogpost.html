@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}Blog-Posts{%endblock title%}
+{%block css%}
+  <style>
+    .container{
+        min-height: 95vh;
+    }
+  </style>
+{%endblock css%}
+{%block body%}
+
+<div class="container">
+    <h1 class="my-3">{{blog.title}}</h1>
+    <div class="my-3">
+        {%comment%}
+            by | we use predefined functions. safe in Django is a way to mark a string as safe for HTML rendering
+        {%endcomment%}
+        {{blog.content|safe}}
+    </div>
+</div>
+
+{%endblock body%}
