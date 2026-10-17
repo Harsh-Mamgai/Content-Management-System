@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+#in this project username and password is same for all the users all in lowercase.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls'))

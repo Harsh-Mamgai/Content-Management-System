@@ -38,6 +38,7 @@ def search(request):
         context = {'logs' : obj}
     return render(request, 'search.html', context)
 
+#this view is used to click on a blog title so it can be opened
 def blogpost(request, slug):
     blog = Blog.objects.filter(slug=slug).first
     context = {'blog' : blog}

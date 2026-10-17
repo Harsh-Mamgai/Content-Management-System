@@ -91,4 +91,17 @@
 </div>
 {%endif%}
 
+{%if not user.is_authenticated%}
+  <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #ffffff, #f1f5f9); border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; max-width: 450px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <div style="background-color: #eff6ff; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#3b82f6" style="width: 32px; height: 32px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+    </div>
+    <p style="font-size: 1.35rem; color: #1e293b; margin: 0 0 0.5rem 0; font-weight: 600; letter-spacing: -0.025em;">Access Restricted</p>
+    <p style="font-size: 1rem; color: #64748b; margin: 0 0 2rem 0; line-height: 1.5;">Kindly login to the site first to view this content. If new user kindly click Sign-Up button to create new user account.</p>
+    <a href="login/" style="display: block; padding: 0.875rem 1.5rem; background-color: #3b82f6; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: background-color 0.2s; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);">Login Here</a>
+  </div>
+{%endif%}
+
 {%endblock body%}
